@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table border="1">
+	<tr>
+		<th>BNO</th>
+		<td>${board.bno}</td>
+	</tr>
+	<tr>
+		<th>TITLE</th>
+		<td>${board.title}</td>
+	</tr>
+	<tr>
+		<th>WRITER</th>
+		<td>${board.writer}</td>
+	</tr>
+	<tr>
+		<th>REG_dATE</th>
+		<td>${board.registerDate}</td>
+	</tr>
+	<tr>
+		<th>CONTENT</th>
+		<td>${board.content}</td>
+	</tr>
+	<tr>
+		<th>read_count</th>
+		<td>${board.read_count}</td>
+	</tr>
+</table>
+
+<c:if test="${board.writer eq ses.email}">
+<a href="/brd/modify?bno=${bvo.bno}">수정</a><br>
+<a href="/brd/remove?bno=${bvo.bno}">삭제</a><br>
+</c:if>
+
+<a href="/brd/pageList">리스트</a><br>
+<div>
+	comment line<br>
+	<input type="text" id="cmtWriter" value="${ses.email}" readonly="readonly"><br>
+	<input type="text" id="cmtText" placeholder="Add Comment">
+	<button type="button" id="cmtAddBtn" class="btn btn-primary">댓글등록</button>
+</div>
+</body>
+</html>
